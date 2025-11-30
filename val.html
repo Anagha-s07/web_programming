@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+</head>
+
+<body>
+
+<form onsubmit="return validate()">
+
+    Name: <input type="text" id="name"><br><br>
+
+    Email: <input type="text" id="email"><br><br>
+
+    Mobile: <input type="text" id="mobile"><br><br>
+
+    Username: <input type="text" id="user"><br><br>
+
+    Password: <input type="password" id="pass"><br><br>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+<script>
+function validate() {
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
+    let user = document.getElementById("user").value.trim();
+    let pass = document.getElementById("pass").value.trim();
+
+    if (name === "") { alert("Enter Name"); return false; }
+
+    if (!/^[A-Za-z ]+$/.test(name)) { alert("Invalid Name"); return false; }
+
+    if (email === "") { alert("Enter Email"); return false; }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) { alert("Invalid Email"); return false; }
+
+    if (mobile.length !== 10 || isNaN(mobile)) { 
+        alert("Enter 10-digit Mobile Number"); 
+        return false; 
+    }
+
+    if (user === "") { alert("Enter Username"); return false; }
+
+    if (!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/.test(pass)) {
+        alert("Weak Password");
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+</body>
+</html>

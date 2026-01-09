@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title>online exam</title>
+</head>
+<body>
+  <h1>Online exam</h1>
+  <form>
+	<label>1.what is the captial of India?</label><br><br>
+	<input name="q1" type="radio" value="a">Mumbai</input><br>
+	<input name="q1" type="radio" value="b">Delhi</input><br>
+	<input name="q1" type="radio" value="c">Kolkata</input><br>
+	<input name="q1" type="radio" value="d">Rajasthan</input><br><br>
+	
+	<label>2.Who is the first prime minister of India?</label><br><br>
+	<input name="q2" type="radio" value="a">Jawaharlal Nehru</input><br>
+	<input name="q2" type="radio" value="b">Subhash Chandra Bose</input><br>
+	<input name="q2" type="radio" value="c">Indira Gandhi</input><br>
+	<input name="q2" type="radio" value="d">K.R Narayanan</input><br><br>
+	
+	<label>3.what is the capital of TamilNadu?</label><br><br>
+	<input name="q3" type="radio" value="a">Chennai</input><br>
+	<input name="q3" type="radio" value="b">Delhi</input><br>
+	<input name="q3" type="radio" value="c">Vizag</input><br>
+	<input name="q3" type="radio" value="d">Mumbai</input><br><br>
+	
+	<label>4.what is the capital of Kerala?</label><br><br>
+	<input name="q4" type="radio" value="a">Thiruvanathapuram</input><br>
+	<input name="q4" type="radio" value="b">Alappuzha</input><br>
+	<input name="q4" type="radio" value="c">Ernakulam</input><br>
+	<input name="q4" type="radio" value="d">Kottayam</input><br><br>
+	
+	<label>5.Who owns the jersy number 18 in the Indian cricket team?</label><br><br>
+	<input name="q5" type="radio" value="a">Virat Kohli</input><br>
+	<input name="q5" type="radio" value="b">Tilak Verma</input><br>
+	<input name="q5" type="radio" value="c">Rohit Sharma</input><br>
+	<input name="q5" type="radio" value="d">Shreyas Iyer</input><br><br>
+	
+	<input type="button" name="submit" value="submit" onclick="check();">
+	   </form>
+	<script>
+	
+		const answers ={
+				q1:'b',
+				q2:'a',
+				q3:'a',
+				q4:'a',
+				q5:'a'
+			      };
+		let score=0;	      
+	        function check(){
+	        	for(const i in answers)
+	        	{
+	        	let selected=document.querySelector(`input[name='${i}']:checked`)
+	        	if(selected && selected.value == answers[`${i}`])
+	        	score++;
+	        	}
+	        	alert(`Your score is ${score}`);
+	        	}
+	       
+	        </script>
+	        </body>
+</html>
+

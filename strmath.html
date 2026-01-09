@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple String & Math Functions</title>
+</head>
+<body>
+
+<h2>String Functions</h2>
+<input type="text" id="text" placeholder="Enter text">
+<button onclick="stringFun()">Show String Functions</button>
+<p id="stringOut"></p>
+
+<h2>Math Functions</h2>
+<input type="number" id="num" placeholder="Enter number">
+<button onclick="mathFun()">Show Math Functions</button>
+<p id="mathOut"></p>
+
+<script>
+function stringFun() {
+    let txt = document.getElementById("text").value;
+
+    document.getElementById("stringOut").innerHTML =
+        "Length: " + txt.length + "<br>" +
+        "Uppercase: " + txt.toUpperCase() + "<br>" +
+        "Lowercase: " + txt.toLowerCase() + "<br>" +
+        "First 3 letters: " + txt.slice(0,3);
+}
+
+function mathFun() {
+    let n = Number(document.getElementById("num").value);
+
+    document.getElementById("mathOut").innerHTML =
+        "Round: " + Math.round(n) + "<br>" +
+        "Square Root: " + Math.sqrt(n) + "<br>" +
+        "Power (n²): " + Math.pow(n,2) + "<br>" +
+        "Absolute: " + Math.abs(n);
+}
+</script>
+
+</body>
+</html>

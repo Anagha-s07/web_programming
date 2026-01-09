@@ -1,0 +1,142 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        table {
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1em;
+            padding: 1em;
+            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        tr,
+        td,
+        th {
+            padding: 1em;
+            text-align: left;
+        }
+
+        .center th {
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 2em;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>FORM VALIDATION</h2>
+
+    <form name="form" action="" method="POST" onsubmit="return validateForm()">
+        <table>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="fname"></td>
+            </tr>
+
+            <tr>
+                <th>Email </th>
+                <td><input type="email" name="email"></td>
+            </tr>
+
+            <tr>
+                <th>Mob NO </th>
+                <td><input type="tel" name="mob"></td>
+            </tr>
+
+            <tr>
+                <th>Username </th>
+                <td><input type="text" name="user"></td>
+            </tr>
+
+            <tr>
+                <th>Password </th>
+                <td><input type="password" name="passcode"></td>
+            </tr>
+
+            <tr class="center">
+                <th colspan="2">
+                    <input type="submit" value="Submit">
+                </th>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function validateForm() {
+
+            var fname = document.form.fname.value.trim();
+            var email = document.form.email.value.trim();
+            var mob = document.form.mob.value.trim();
+            var user = document.form.user.value.trim();
+            var passcode = document.form.passcode.value.trim();
+
+            // Correct name validator (letters and spaces only)
+            var nameRegex = /^[A-Za-z ]+$/;
+
+            // Correct email regex (standard)
+            var emailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+            // Strong password regex
+            var passRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+
+            // Name validation
+            if (fname === "") {
+                alert("Enter First Name !!");
+                return false;
+            } else if (!nameRegex.test(fname)) {
+                alert("Enter Valid Name (letters only) !!");
+                return false;
+            }
+
+            // Email validation
+            if (email === "") {
+                alert("Enter Email !!");
+                return false;
+            } else if (!emailRegex.test(email)) {
+                alert("Enter valid Gmail ID (example@gmail.com) !!");
+                return false;
+            }
+
+            // Mobile validation
+            if (mob === "") {
+                alert("Enter Mobile Number !!");
+                return false;
+            } else if (isNaN(mob)) {
+                alert("Enter only digits for Mobile Number !!");
+                return false;
+            } else if (mob.length != 10) {
+                alert("Enter 10-digit Mobile Number !!");
+                return false;
+            }
+
+            // Username validation
+            if (user === "") {
+                alert("Enter Username !!");
+                return false;
+            }
+
+            // Password validation
+            if (!passRegex.test(passcode)) {
+                alert("Password must contain:\n- Minimum 8 characters\n- One uppercase\n- One lowercase\n- One digit\n- One special character");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<html lang="en">
+
+<head>
+    <title>Form Validation</title>
+    <style>
+        table {
+            background-color: white;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1em;
+            padding: 1em;
+            box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        tr,
+        td,
+        th {
+            padding: 1em;
+            text-align: left;
+        }
+
+       
+           </style>
+</head>
+
+<body>
+    <center><h2>FORM VALIDATION</h2></center>
+
+    <form name="form" action="" method="POST" onsubmit="return validateForm()">
+        <table >
+            <tr>
+                <th>Name</th>
+                <td><input type="text" name="name"></td>
+            </tr>
+
+            <tr>
+                <th>Email </th>
+                <td><input type="email" name="email"></td>
+            </tr>
+
+            <tr>
+                <th>Mob NO </th>
+                <td><input type="tel" name="mobile"></td>
+            </tr>
+
+            <tr>
+                <th>Username </th>
+                <td><input type="text" name="user"></td>
+            </tr>
+
+            <tr>
+                <th>Password </th>
+                <td><input type="password" name="password"></td>
+            </tr>
+
+            <tr>
+                <th colspan="2">
+                   <center> <input type="submit" value="Submit" ></center>
+                </th>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function validateForm() {
+
+            var name = document.form.name.value.trim();
+            var email = document.form.email.value.trim();
+            var mobile = document.form.mobile.value.trim();
+            var user = document.form.user.value.trim();
+            var password = document.form.password.value.trim();
+
+      
+            var nameReg = /^[A-Za-z ]+$/;
+
+            
+            var emailReg = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+            var passReg = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+
+
+            if (name === "") 
+		{
+                alert("Enter First Name !!");
+                return false;
+            } 
+		else if (!nameReg.test(name))
+		 {
+                alert("Enter Valid Name (letters only) !!");
+                return false;
+            }
+
+            
+            if (email === "")
+		 {
+                alert("Enter Email !!");
+                return false;
+            } 
+		else if (!emailReg.test(email)) 
+		{
+                alert("Enter valid Gmail ID (example@gmail.com) !!");
+                return false;
+            }
+
+           
+            if (mobile === "") 
+		{
+                alert("Enter Mobile Number !!");
+                return false;
+            } 
+		else if (isNaN(mobile))
+		 {
+                alert("Enter only digits for Mobile Number !!");
+                return false;
+            } 
+		else if (mobile.length != 10) 
+		{
+                alert("Enter 10-digit Mobile Number !!");
+                return false;
+            }
+
+            if (user === "") 
+		{
+                alert("Enter Username !!");
+                return false;
+            }
+
+     
+            if (!passReg.test(password)) {
+                alert("Password must contain:\n- Minimum 8 characters\n- One uppercase\n- One lowercase\n- One digit\n- One special character");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>
